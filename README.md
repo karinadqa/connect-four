@@ -12,6 +12,7 @@ Config2 and currentPlayer2 variable added for 2nd case when first player is usin
 
 # controller.js
 Added user input to get color from the player's input
+If color is not black or red, throw alert message and reload the game
 
 # functions.js
 Added new function changePlayer2 to use config2
