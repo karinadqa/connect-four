@@ -17,6 +17,10 @@ $(document).ready(function() {
         $('.prefix').text(config2.playerPrefix);
         $('#player').addClass(currentPlayer2).text(config2[currentPlayer2 + "PlayerName"]);
     }
+    else {
+        alert("You can choose only red or black colors")
+        location.reload();
+    }
 
     // Trigger the game sequence by clicking on a position button on the board.
     $('.board button').click(function(e) {
