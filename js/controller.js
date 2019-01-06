@@ -2,10 +2,21 @@ $(document).ready(function() {
 
     // Setup game.
     // @todo: Make name pop-ups more user-friendly. Perhaps optional?
-    config.blackPlayerName = prompt("Please enter the first player's name. This player will use black game pieces.", config.blackPlayerName) || config.blackPlayerName;
-    config.redPlayerName = prompt("Please enter the second player's name. This player will use red game pieces.", config.redPlayerName) || config.redPlayerName;
-    $('.prefix').text(config.playerPrefix);
-    $('#player').addClass(currentPlayer).text(config[currentPlayer + "PlayerName"]);
+    var piecesColor = prompt("Please select the color (red or black)")
+
+    // Setup Player and Color based on the selecter color option    
+    if (piecesColor == "black") {
+        config.blackPlayerName = prompt("Please enter the first player's name. This player will use black game pieces.", config.blackPlayerName) || config.blackPlayerName;
+        config.redPlayerName = prompt("Please enter the second player's name. This player will use red game pieces.", config.redPlayerName) || config.redPlayerName;
+        $('.prefix').text(config.playerPrefix);
+        $('#player').addClass(currentPlayer).text(config[currentPlayer + "PlayerName"]);
+    }
+    else if (piecesColor == "red"){
+        config2.redPlayerName = prompt("Please enter the first player's name. This player will use red game pieces.", config2.redPlayerName) || config2.redPlayerName;
+        config2.blackPlayerName = prompt("Please enter the second player's name. This player will use black game pieces.", config2.blackPlayerName) || config2.blackPlayerName;
+        $('.prefix').text(config2.playerPrefix);
+        $('#player').addClass(currentPlayer2).text(config2[currentPlayer2 + "PlayerName"]);
+    }
 
     // Trigger the game sequence by clicking on a position button on the board.
     $('.board button').click(function(e) {
@@ -21,7 +32,13 @@ $(document).ready(function() {
             return;
         }
 
-        addDiscToBoard(currentPlayer, x_pos, y_pos);
+        if (piecesColor == "black") {
+            addDiscToBoard(currentPlayer, x_pos, y_pos);
+        }
+        else {
+            addDiscToBoard(currentPlayer2, x_pos, y_pos);
+        }
+            
         printBoard();
 
         // Check to see if we have a winner.
@@ -39,8 +56,12 @@ $(document).ready(function() {
             $('.play-again').show("slow");
             return;
         }
-
-        changePlayer();
+        if (piecesColor == 'black') {
+            changePlayer();
+        }
+        else {
+            changePlayer2();
+        }      
     });
 
     $('.play-again').click(function(e) {

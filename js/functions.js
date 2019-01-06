@@ -35,10 +35,20 @@ function changePlayer() {
     } else {
         currentPlayer = 'black';
     }
-
     // Update the UI.
     $('#player').removeClass().addClass(currentPlayer).text(config[currentPlayer + "PlayerName"]);
 }
+
+function changePlayer2() {
+    if (currentPlayer2 === 'black') {
+        currentPlayer2 = 'red';
+    } else {
+        currentPlayer2 = 'black';      
+    }
+    // Update the UI. 
+    $('#player').removeClass().addClass(currentPlayer2).text(config2[currentPlayer2 + "PlayerName"]);
+}
+
 
 /**
  * If there are empty positions below the one chose, return the new y-position
